@@ -1,0 +1,644 @@
+{%- comment -%}
+  Section: Hero Slider (Premium Automotive Style)
+  - Pure CSS/JS slider (no dependencies)
+  - Responsive (mobile + desktop)
+  - Autoplay, arrows, dots (toggleable)
+  - Up to 5 dynamic slides
+  - No font-family declarations (inherits theme font)
+{%- endcomment -%}
+
+{%- liquid
+  assign s_id = section.id | replace: '_', '-'
+  assign autoplay = section.settings.autoplay
+  assign autoplay_speed = section.settings.autoplay_speed | default: 6000
+  assign show_arrows = section.settings.show_arrows
+  assign show_dots = section.settings.show_dots
+  assign overlay_opacity = section.settings.overlay_opacity | default: 55
+  assign accent = section.settings.accent_color | default: '#F5C24A'
+  assign text_color = section.settings.text_color | default: '#FFFFFF'
+  assign bg_color = section.settings.bg_color | default: '#0B0B0B'
+  assign btn_text_dark = section.settings.btn_text_dark | default: '#0B0B0B'
+-%}
+
+<style>
+  #hero-slider-{{ s_id }} {
+    --hs-accent: {{ accent }};
+    --hs-text: {{ text_color }};
+    --hs-bg: {{ bg_color }};
+    --hs-btn-dark: {{ btn_text_dark }};
+    --hs-overlay: {{ overlay_opacity | divided_by: 100.0 }};
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: var(--hs-bg);
+    color: var(--hs-text);
+  }
+  #hero-slider-{{ s_id }} .hs-viewport {
+    position: relative;
+    width: 100%;
+    min-height: 560px;
+    height: 100vh;
+    max-height: 820px;
+  }
+  #hero-slider-{{ s_id }} .hs-slide {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 900ms ease, visibility 0s linear 900ms;
+    z-index: 1;
+  }
+  #hero-slider-{{ s_id }} .hs-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 900ms ease, visibility 0s linear 0s;
+    z-index: 2;
+  }
+  #hero-slider-{{ s_id }} .hs-bg {
+    position: absolute;
+    inset: 0;
+    background-position: center right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    transform: scale(1.08);
+    transition: transform 8000ms ease;
+  }
+  #hero-slider-{{ s_id }} .hs-slide.is-active .hs-bg {
+    transform: scale(1);
+  }
+  #hero-slider-{{ s_id }} .hs-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(0,0,0,calc(var(--hs-overlay) + 0.2)) 0%, rgba(0,0,0,calc(var(--hs-overlay) - 0.15)) 55%, rgba(0,0,0,0.15) 100%);
+  }
+  #hero-slider-{{ s_id }} .hs-inner {
+    position: relative;
+    z-index: 3;
+    /*max-width: 1550px;*/
+    margin: 0 auto;
+    /*padding: 96px 32px 64px;*/
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+  #hero-slider-{{ s_id }} .hs-content {
+    /*max-width: 640px;*/
+    max-width: 590px;
+    width: 100%;
+  }
+  #hero-slider-{{ s_id }} .hs-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 22px;
+    border: 1px solid var(--hs-accent);
+    border-radius: 999px;
+    color: var(--hs-accent);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  #hero-slider-{{ s_id }} .hs-slide.is-active .hs-badge {
+    animation: hsFadeUp 900ms ease 200ms forwards;
+  }
+  #hero-slider-{{ s_id }} .hs-badge svg { width: 12px; height: 12px; fill: var(--hs-accent); }
+  #hero-slider-{{ s_id }} .hs-title {
+    margin: 28px 0 24px;
+    font-size: clamp(36px, 6vw, 72px);
+    line-height: 1;
+    font-weight: 400;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateY(24px);
+    color: var(--hs-text);
+  }
+  #hero-slider-{{ s_id }} .hs-slide.is-active .hs-title {
+    animation: hsFadeUp 1000ms ease 350ms forwards;
+  }
+  #hero-slider-{{ s_id }} .hs-title .hs-accent { color: var(--hs-accent); }
+  #hero-slider-{{ s_id }} .hs-sub {
+    max-width: 460px;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0;
+    transform: translateY(20px);
+    color: rgba(255,255,255,0.85);
+  }
+  #hero-slider-{{ s_id }} .hs-slide.is-active .hs-sub {
+    animation: hsFadeUp 900ms ease 500ms forwards;
+  }
+  #hero-slider-{{ s_id }} .hs-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 36px;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  #hero-slider-{{ s_id }} .hs-slide.is-active .hs-cta {
+    animation: hsFadeUp 900ms ease 650ms forwards;
+  }
+  #hero-slider-{{ s_id }} .hs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 28px;
+    border-radius: 8px;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 300ms ease, background 300ms ease, color 300ms ease, box-shadow 300ms ease;
+  }
+  #hero-slider-{{ s_id }} .hs-btn-primary {
+    background: var(--hs-accent);
+    color: var(--hs-btn-dark);
+    box-shadow: 0 12px 40px -10px rgba(245,194,74,0.55);
+  }
+  #hero-slider-{{ s_id }} .hs-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 18px 44px -10px rgba(245,194,74,0.7);
+  }
+  #hero-slider-{{ s_id }} .hs-btn-secondary {
+    background: transparent;
+    color: var(--hs-text);
+    border: 1px solid var(--hs-accent);
+  }
+  #hero-slider-{{ s_id }} .hs-btn-secondary:hover {
+    background: var(--hs-accent);
+    color: var(--hs-btn-dark);
+    transform: translateY(-2px);
+  }
+  #hero-slider-{{ s_id }} .hs-btn .hs-arrow {
+    width: 16px; height: 16px;
+    transition: transform 300ms ease;
+  }
+  #hero-slider-{{ s_id }} .hs-btn:hover .hs-arrow { transform: translateX(4px); }
+  #hero-slider-{{ s_id }} .hs-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 64px;
+    flex-wrap: wrap;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  #hero-slider-{{ s_id }} .hs-slide.is-active .hs-stats {
+    animation: hsFadeUp 900ms ease 800ms forwards;
+  }
+  #hero-slider-{{ s_id }} .hs-stat-value {
+    color: var(--hs-accent);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+  }
+  #hero-slider-{{ s_id }} .hs-stat-label {
+    margin-top: 8px;
+    color: rgba(255,255,255,0.75);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  /* Arrows */
+  #hero-slider-{{ s_id }} .hs-arrows {
+    position: absolute;
+    z-index: 5;
+    right: 32px;
+    bottom: 32px;
+    display: flex;
+    gap: 12px;
+  }
+  #hero-slider-{{ s_id }} .hs-arrow-btn {
+    width: 52px; height: 52px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.25);
+    background: rgba(0,0,0,0.35);
+    color: var(--hs-text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    transition: background 300ms ease, border-color 300ms ease, transform 300ms ease;
+  }
+  #hero-slider-{{ s_id }} .hs-arrow-btn:hover {
+    background: var(--hs-accent);
+    border-color: var(--hs-accent);
+    color: var(--hs-btn-dark);
+    transform: scale(1.06);
+  }
+  #hero-slider-{{ s_id }} .hs-arrow-btn svg { width: 18px; height: 18px; }
+
+  /* Dots */
+  #hero-slider-{{ s_id }} .hs-dots {
+    position: absolute;
+    z-index: 2;
+    left: 50%;
+    bottom: 28px;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+  }
+  #hero-slider-{{ s_id }} .hs-dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.35);
+    border: none;
+    cursor: pointer;
+    transition: width 400ms ease, background 400ms ease;
+  }
+  #hero-slider-{{ s_id }} .hs-dot.is-active {
+    width: 32px;
+    border-radius: 999px;
+    background: var(--hs-accent);
+  }
+
+  /* Progress bar */
+  #hero-slider-{{ s_id }} .hs-progress {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 2px;
+    background: rgba(255,255,255,0.08);
+    z-index: 4;
+  }
+  #hero-slider-{{ s_id }} .hs-progress-bar {
+    height: 100%;
+    width: 0%;
+    background: var(--hs-accent);
+    transition: width 120ms linear;
+  }
+
+  @keyframes hsFadeUp {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    #hero-slider-{{ s_id }} .hs-viewport { min-height: 520px; height: auto; max-height: none; }
+    #hero-slider-{{ s_id }} .hs-bg { background-position: center; }
+    #hero-slider-{{ s_id }} .hs-overlay {
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.75) 100%);
+    }
+    #hero-slider-{{ s_id }} .hs-inner { padding: 80px 28px 120px; }
+    #hero-slider-{{ s_id }} .hs-stats { gap: 32px; margin-top: 48px; }
+  }
+
+  /* Mobile */
+  @media (max-width: 640px) {
+    #hero-slider-{{ s_id }} .hs-viewport { min-height: 620px; }
+    #hero-slider-{{ s_id }} .hs-inner { padding: 72px 20px 140px; align-items: flex-start; }
+    #hero-slider-{{ s_id }} .hs-content { max-width: 100%; }
+    #hero-slider-{{ s_id }} .hs-badge { padding: 8px 16px; font-size: 10px; letter-spacing: 1.5px; }
+    #hero-slider-{{ s_id }} .hs-title { margin: 20px 0 18px; }
+    #hero-slider-{{ s_id }} .hs-sub { font-size: 15px; }
+    #hero-slider-{{ s_id }} .hs-cta { margin-top: 28px; }
+    #hero-slider-{{ s_id }} .hs-btn { padding: 14px 20px; font-size: 11px; flex: 1 1 auto; justify-content: center; }
+    #hero-slider-{{ s_id }} .hs-stats { gap: 24px; margin-top: 36px; }
+    #hero-slider-{{ s_id }} .hs-stat-value { font-size: 22px; }
+    #hero-slider-{{ s_id }} .hs-stat-label { font-size: 10px; }
+    #hero-slider-{{ s_id }} .hs-arrows { right: 16px; bottom: 56px; gap: 8px; }
+    #hero-slider-{{ s_id }} .hs-arrow-btn { width: 42px; height: 42px; }
+    #hero-slider-{{ s_id }} .hs-dots { bottom: 20px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    #hero-slider-{{ s_id }} .hs-slide,
+    #hero-slider-{{ s_id }} .hs-bg,
+    #hero-slider-{{ s_id }} .hs-badge,
+    #hero-slider-{{ s_id }} .hs-title,
+    #hero-slider-{{ s_id }} .hs-sub,
+    #hero-slider-{{ s_id }} .hs-cta,
+    #hero-slider-{{ s_id }} .hs-stats {
+      animation: none !important;
+      transition: none !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+  }
+</style>
+
+<section
+  id="hero-slider-{{ s_id }}"
+  class="hero-slider"
+  data-autoplay="{{ autoplay }}"
+  data-autoplay-speed="{{ autoplay_speed }}"
+  aria-roledescription="carousel"
+  aria-label="{{ section.settings.aria_label | default: 'Hero slider' }}"
+>
+  <div class="hs-viewport">
+    {%- if section.blocks.size > 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'slide' -%}
+          {%- liquid
+            assign img = block.settings.image
+            assign active_class = ''
+            if forloop.first
+              assign active_class = ' is-active'
+            endif
+          -%}
+          <div
+            class="hs-slide{{ active_class }}"
+            data-index="{{ forloop.index0 }}"
+            role="group"
+            aria-roledescription="slide"
+            aria-label="{{ forloop.index }} of {{ section.blocks.size }}"
+            {{ block.shopify_attributes }}
+          >
+            <div
+              class="hs-bg"
+              {% if img != blank %}
+                style="background-image: url('{{ img | image_url: width: 2400 }}'); display:flex;"
+              {% else %}
+                style="background: linear-gradient(135deg, #1a1a1a 0%, #0b0b0b 100%);"
+              {% endif %}
+            ></div>
+            <div class="hs-overlay"></div>
+
+            <div class="hs-inner page-width">
+              <div class="hs-content">
+                {%- if block.settings.badge != blank -%}
+                  <div class="hs-badge">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.39 7.36H22l-6.19 4.5L18.2 22 12 17.5 5.8 22l2.39-8.14L2 9.36h7.61z"/></svg>
+                    <span>{{ block.settings.badge }}</span>
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.heading != blank -%}
+                  <h2 class="hs-title">
+                    {{ block.settings.heading }}
+                    {%- if block.settings.heading_highlight != blank -%}
+                      <span class="hs-accent">{{ block.settings.heading_highlight }}</span>
+                    {%- endif -%}
+                  </h2>
+                {%- endif -%}
+
+                {%- if block.settings.subheading != blank -%}
+                  <p class="hs-sub">{{ block.settings.subheading }}</p>
+                {%- endif -%}
+
+                {%- if block.settings.btn1_text != blank or block.settings.btn2_text != blank -%}
+                  <div class="hs-cta">
+                    {%- if block.settings.btn1_text != blank -%}
+                      <a class="hs-btn hs-btn-primary" href="{{ block.settings.btn1_link | default: '#' }}">
+                        <span>{{ block.settings.btn1_text }}</span>
+                        <svg class="hs-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+                      </a>
+                    {%- endif -%}
+                    {%- if block.settings.btn2_text != blank -%}
+                      <a class="hs-btn hs-btn-secondary" href="{{ block.settings.btn2_link | default: '#' }}">
+                        <span>{{ block.settings.btn2_text }}</span>
+                      </a>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+
+                {%- if block.settings.stat1_value != blank or block.settings.stat2_value != blank or block.settings.stat3_value != blank -%}
+                  <div class="hs-stats">
+                    {%- if block.settings.stat1_value != blank -%}
+                      <div class="hs-stat">
+                        <div class="hs-stat-value">{{ block.settings.stat1_value }}</div>
+                        <div class="hs-stat-label">{{ block.settings.stat1_label }}</div>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.stat2_value != blank -%}
+                      <div class="hs-stat">
+                        <div class="hs-stat-value">{{ block.settings.stat2_value }}</div>
+                        <div class="hs-stat-label">{{ block.settings.stat2_label }}</div>
+                      </div>
+                    {%- endif -%}
+                    {%- if block.settings.stat3_value != blank -%}
+                      <div class="hs-stat">
+                        <div class="hs-stat-value">{{ block.settings.stat3_value }}</div>
+                        <div class="hs-stat-label">{{ block.settings.stat3_label }}</div>
+                      </div>
+                    {%- endif -%}
+                  </div>
+                {%- endif -%}
+              </div>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    {%- else -%}
+      <div class="hs-slide is-active">
+        <div class="hs-bg" style="background: linear-gradient(135deg, #1a1a1a 0%, #0b0b0b 100%);"></div>
+        <div class="hs-overlay"></div>
+        <div class="hs-inner">
+          <div class="hs-content">
+            <h2 class="hs-title">Add slides from the theme editor</h2>
+            <p class="hs-sub">Use the "Add block" button to create up to 5 slides.</p>
+          </div>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {% comment %} {%- if show_arrows and section.blocks.size > 1 -%}
+      <div class="hs-arrows" aria-label="Slider navigation">
+        <button class="hs-arrow-btn" data-dir="prev" aria-label="Previous slide" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="hs-arrow-btn" data-dir="next" aria-label="Next slide" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    {%- endif -%} {% endcomment %}
+
+    {%- if show_dots and section.blocks.size > 1 -%}
+      <div class="hs-dots" role="tablist" aria-label="Slide indicators">
+        {%- for block in section.blocks -%}
+          <button
+            class="hs-dot{% if forloop.first %} is-active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+            type="button"
+            role="tab"
+            aria-label="Go to slide {{ forloop.index }}"
+            aria-selected="{% if forloop.first %}true{% else %}false{% endif %}"
+          ></button>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if autoplay and section.blocks.size > 1 -%}
+      <div class="hs-progress" aria-hidden="true"><div class="hs-progress-bar"></div></div>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+  (function () {
+    var root = document.getElementById('hero-slider-{{ s_id }}');
+    if (!root) return;
+
+    var slides = root.querySelectorAll('.hs-slide');
+    var dots = root.querySelectorAll('.hs-dot');
+    var prevBtn = root.querySelector('[data-dir="prev"]');
+    var nextBtn = root.querySelector('[data-dir="next"]');
+    var progressBar = root.querySelector('.hs-progress-bar');
+
+    if (slides.length <= 1) return;
+
+    var autoplay = root.getAttribute('data-autoplay') === 'true';
+    var speed = parseInt(root.getAttribute('data-autoplay-speed'), 10) || 6000;
+    var current = 0;
+    var timer = null;
+    var progressTimer = null;
+    var progressStart = 0;
+    var paused = false;
+
+    function goTo(index) {
+      if (index === current) return;
+      var total = slides.length;
+      index = ((index % total) + total) % total;
+      slides[current].classList.remove('is-active');
+      slides[index].classList.add('is-active');
+      if (dots.length) {
+        dots.forEach(function (d, i) {
+          d.classList.toggle('is-active', i === index);
+          d.setAttribute('aria-selected', i === index ? 'true' : 'false');
+        });
+      }
+      current = index;
+      if (autoplay) restart();
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+
+    function restart() { stop(); start(); }
+
+    function start() {
+      if (!autoplay || paused) return;
+      progressStart = Date.now();
+      if (progressBar) progressBar.style.width = '0%';
+      timer = setTimeout(next, speed);
+      if (progressBar) {
+        progressTimer = setInterval(function () {
+          var elapsed = Date.now() - progressStart;
+          var pct = Math.min(100, (elapsed / speed) * 100);
+          progressBar.style.width = pct + '%';
+        }, 80);
+      }
+    }
+
+    function stop() {
+      if (timer) { clearTimeout(timer); timer = null; }
+      if (progressTimer) { clearInterval(progressTimer); progressTimer = null; }
+    }
+
+    if (nextBtn) nextBtn.addEventListener('click', next);
+    if (prevBtn) prevBtn.addEventListener('click', prev);
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        var i = parseInt(d.getAttribute('data-index'), 10);
+        if (!isNaN(i)) goTo(i);
+      });
+    });
+
+    root.addEventListener('mouseenter', function () { paused = true; stop(); });
+    root.addEventListener('mouseleave', function () { paused = false; start(); });
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { stop(); } else if (!paused) { start(); }
+    });
+
+    var touchStartX = 0;
+    var touchEndX = 0;
+    root.addEventListener('touchstart', function (e) {
+      touchStartX = e.changedTouches[0].screenX;
+      paused = true; stop();
+    }, { passive: true });
+    root.addEventListener('touchend', function (e) {
+      touchEndX = e.changedTouches[0].screenX;
+      var diff = touchEndX - touchStartX;
+      if (Math.abs(diff) > 50) { diff < 0 ? next() : prev(); }
+      paused = false; start();
+    }, { passive: true });
+
+    root.setAttribute('tabindex', '0');
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') next();
+      else if (e.key === 'ArrowLeft') prev();
+    });
+
+    start();
+
+    if (window.Shopify && Shopify.designMode) {
+      document.addEventListener('shopify:block:select', function (e) {
+        if (e.target.closest('#hero-slider-{{ s_id }}')) {
+          var idx = parseInt(e.target.getAttribute('data-index'), 10);
+          if (!isNaN(idx)) { paused = true; stop(); goTo(idx); }
+        }
+      });
+      document.addEventListener('shopify:block:deselect', function () { paused = false; start(); });
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Hero Slider",
+  "tag": "section",
+  "class": "section-hero-slider",
+  "settings": [
+    { "type": "header", "content": "Slider Behavior" },
+    { "type": "checkbox", "id": "autoplay", "label": "Enable autoplay", "default": true },
+    { "type": "range", "id": "autoplay_speed", "label": "Autoplay speed (ms)", "min": 3000, "max": 9000, "step": 500, "default": 6000 },
+    { "type": "checkbox", "id": "show_arrows", "label": "Show arrows", "default": true },
+    { "type": "checkbox", "id": "show_dots", "label": "Show dots", "default": true },
+    { "type": "text", "id": "aria_label", "label": "Accessibility label", "default": "Hero slider" },
+
+    { "type": "header", "content": "Appearance" },
+    { "type": "color", "id": "bg_color", "label": "Background color", "default": "#0B0B0B" },
+    { "type": "color", "id": "text_color", "label": "Text color", "default": "#FFFFFF" },
+    { "type": "color", "id": "accent_color", "label": "Accent color", "default": "#F5C24A" },
+    { "type": "color", "id": "btn_text_dark", "label": "Primary button text color", "default": "#0B0B0B" },
+    { "type": "range", "id": "overlay_opacity", "label": "Overlay darkness (%)", "min": 0, "max": 90, "step": 5, "default": 55 }
+  ],
+  "blocks": [
+    {
+      "type": "slide",
+      "name": "Slide",
+      "limit": 5,
+      "settings": [
+        { "type": "header", "content": "Background" },
+        { "type": "image_picker", "id": "image", "label": "Background image" },
+
+        { "type": "header", "content": "Content" },
+        { "type": "text", "id": "badge", "label": "Badge text", "default": "★ Premium Automotive Parts" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "Drive performance to the" },
+        { "type": "text", "id": "heading_highlight", "label": "Highlighted word(s)", "default": "next level", "info": "Shown in accent color at the end of the heading." },
+        { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Premium spare parts and accessories engineered for power, durability, and style." },
+
+        { "type": "header", "content": "Buttons" },
+        { "type": "text", "id": "btn1_text", "label": "Primary button text", "default": "Shop Spare Parts" },
+        { "type": "url", "id": "btn1_link", "label": "Primary button link" },
+        { "type": "text", "id": "btn2_text", "label": "Secondary button text", "default": "Explore Accessories" },
+        { "type": "url", "id": "btn2_link", "label": "Secondary button link" },
+
+        { "type": "header", "content": "Stats" },
+        { "type": "text", "id": "stat1_value", "label": "Stat 1 value", "default": "10K+" },
+        { "type": "text", "id": "stat1_label", "label": "Stat 1 label", "default": "Products" },
+        { "type": "text", "id": "stat2_value", "label": "Stat 2 value", "default": "500+" },
+        { "type": "text", "id": "stat2_label", "label": "Stat 2 label", "default": "Brands" },
+        { "type": "text", "id": "stat3_value", "label": "Stat 3 value", "default": "24/7" },
+        { "type": "text", "id": "stat3_label", "label": "Stat 3 label", "default": "Support" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Slider",
+      "blocks": [
+        { "type": "slide" },
+        { "type": "slide" }
+      ]
+    }
+  ]
+}
+{% endschema %}

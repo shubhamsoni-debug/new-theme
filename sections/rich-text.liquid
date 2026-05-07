@@ -12,6 +12,23 @@
       padding-bottom: {{ section.settings.padding_bottom }}px;
     }
   }
+
+  .rich-text__caption {
+    position: relative;
+    display: inline-block;
+    padding-bottom: {{ section.settings.caption_line_spacing }}px;
+  }
+
+  .rich-text__caption::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: {{ section.settings.caption_line_height }}px;
+    background: {{ section.settings.caption_line_color }};
+    transition: all .3s ease;
+  }
 {%- endstyle -%}
 
 <div class="isolate{% unless section.settings.full_width %} page-width{% endunless %}">
@@ -154,6 +171,46 @@
       "id": "full_width",
       "default": true,
       "label": "t:sections.rich-text.settings.full_width.label"
+    },
+    {
+      "type": "header",
+      "content": "Caption Line Settings"
+    },
+    {
+      "type": "range",
+      "id": "caption_line_width",
+      "min": 20,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Caption Line Width",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "caption_line_height",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Caption Line Height",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "caption_line_spacing",
+      "min": 0,
+      "max": 50,
+      "step": 1,
+      "unit": "px",
+      "label": "Caption Bottom Spacing",
+      "default": 13
+    },
+    {
+      "type": "color",
+      "id": "caption_line_color",
+      "label": "Caption Line Color",
+      "default": "#000000"
     },
     {
       "type": "header",
