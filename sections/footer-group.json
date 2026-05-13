@@ -13,6 +13,7 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "disabled": true,
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
@@ -27,9 +28,41 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "footer-1": {
+      "type": "footer-1",
+      "settings": {
+        "logo": "shopify://shop_images/Venice_black_logo.avif",
+        "logo_alt": "Store logo",
+        "brand_text": "<p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>",
+        "show_social_icons": true,
+        "facebook_link": "",
+        "instagram_link": "",
+        "youtube_link": "",
+        "twitter_link": "",
+        "contact_icon": "☎",
+        "phone": "+1800-140-1000",
+        "email": "support@****.com",
+        "address": "PO Box 1622, Vissasang St West",
+        "quick_links_menu": "quick-links",
+        "shopping_info_menu": "quick-links",
+        "bottom_links_menu": "",
+        "show_benefits": false,
+        "benefit_1_title": "FREE SHIPPING",
+        "benefit_1_text": "On orders over $150",
+        "benefit_2_title": "SECURE PAYMENT",
+        "benefit_2_text": "100% protected payments",
+        "benefit_3_title": "30 DAYS RETURN",
+        "benefit_3_text": "Hassle free return",
+        "benefit_4_title": "CUSTOMER SUPPORT",
+        "benefit_4_text": "Dedicated support",
+        "copyright_text": "© 2026, shubhlemosys Powered by Shopify",
+        "show_payment_icons": true
+      }
     }
   },
   "order": [
-    "footer"
+    "footer",
+    "footer-1"
   ]
 }

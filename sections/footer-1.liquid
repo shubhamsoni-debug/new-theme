@@ -1,0 +1,793 @@
+{% assign footer_menu_1 = section.settings.quick_links_menu %}
+{% assign footer_menu_2 = section.settings.shopping_info_menu %}
+
+<footer class="cars-part-footer">
+  <div class="cars-part-footer__top">
+    <div class="cars-part-footer__grid page-width">
+      
+      <!-- Brand Column -->
+      <div class="cars-part-footer__col cars-part-footer__brand">
+        {% if section.settings.logo != blank %}
+          <div class="cars-part-footer__logo">
+            <img
+              src="{{ section.settings.logo | image_url: width: 260 }}"
+              alt="{{ section.settings.logo_alt | escape }}"
+              loading="lazy"
+              width="{{ section.settings.logo.width }}"
+              height="{{ section.settings.logo.height }}"
+            >
+          </div>
+        {% endif %}
+
+        {% if section.settings.brand_text != blank %}
+          <div class="cars-part-footer__text rte">
+            {{ section.settings.brand_text }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.show_social_icons %}
+          <div class="cars-part-footer__social">
+            {% if section.settings.facebook_link != blank %}
+              <a href="{{ section.settings.facebook_link }}" target="_blank" rel="noopener" aria-label="Facebook">
+                <span class="cars-part-footer__social-icon">
+                    <svg width="64px" height="64px" viewBox="0 0 100 100" version="1.1" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <style type="text/css"> .st0{fill:#FFFFFF;} .st1{fill:#F5BB41;} .st2{fill:#2167D1;} .st3{fill:#3D84F3;} .st4{fill:#4CA853;} .st5{fill:#398039;} .st6{fill:#D74F3F;} .st7{fill:#D43C89;} .st8{fill:#B2005F;} .st9{fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st10{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#000000;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st11{fill-rule:evenodd;clip-rule:evenodd;fill:none;stroke:#040404;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;} .st12{fill-rule:evenodd;clip-rule:evenodd;} .st13{fill-rule:evenodd;clip-rule:evenodd;fill:#040404;} .st14{fill:url(#SVGID_1_);} .st15{fill:url(#SVGID_2_);} .st16{fill:url(#SVGID_3_);} .st17{fill:url(#SVGID_4_);} .st18{fill:url(#SVGID_5_);} .st19{fill:url(#SVGID_6_);} .st20{fill:url(#SVGID_7_);} .st21{fill:url(#SVGID_8_);} .st22{fill:url(#SVGID_9_);} .st23{fill:url(#SVGID_10_);} .st24{fill:url(#SVGID_11_);} .st25{fill:url(#SVGID_12_);} .st26{fill:url(#SVGID_13_);} .st27{fill:url(#SVGID_14_);} .st28{fill:url(#SVGID_15_);} .st29{fill:url(#SVGID_16_);} .st30{fill:url(#SVGID_17_);} .st31{fill:url(#SVGID_18_);} .st32{fill:url(#SVGID_19_);} .st33{fill:url(#SVGID_20_);} .st34{fill:url(#SVGID_21_);} .st35{fill:url(#SVGID_22_);} .st36{fill:url(#SVGID_23_);} .st37{fill:url(#SVGID_24_);} .st38{fill:url(#SVGID_25_);} .st39{fill:url(#SVGID_26_);} .st40{fill:url(#SVGID_27_);} .st41{fill:url(#SVGID_28_);} .st42{fill:url(#SVGID_29_);} .st43{fill:url(#SVGID_30_);} .st44{fill:url(#SVGID_31_);} .st45{fill:url(#SVGID_32_);} .st46{fill:url(#SVGID_33_);} .st47{fill:url(#SVGID_34_);} .st48{fill:url(#SVGID_35_);} .st49{fill:url(#SVGID_36_);} .st50{fill:url(#SVGID_37_);} .st51{fill:url(#SVGID_38_);} .st52{fill:url(#SVGID_39_);} .st53{fill:url(#SVGID_40_);} .st54{fill:url(#SVGID_41_);} .st55{fill:url(#SVGID_42_);} .st56{fill:url(#SVGID_43_);} .st57{fill:url(#SVGID_44_);} .st58{fill:url(#SVGID_45_);} .st59{fill:#040404;} .st60{fill:url(#SVGID_46_);} .st61{fill:url(#SVGID_47_);} .st62{fill:url(#SVGID_48_);} .st63{fill:url(#SVGID_49_);} .st64{fill:url(#SVGID_50_);} .st65{fill:url(#SVGID_51_);} .st66{fill:url(#SVGID_52_);} .st67{fill:url(#SVGID_53_);} .st68{fill:url(#SVGID_54_);} .st69{fill:url(#SVGID_55_);} .st70{fill:url(#SVGID_56_);} .st71{fill:url(#SVGID_57_);} .st72{fill:url(#SVGID_58_);} .st73{fill:url(#SVGID_59_);} .st74{fill:url(#SVGID_60_);} .st75{fill:url(#SVGID_61_);} .st76{fill:url(#SVGID_62_);} .st77{fill:none;stroke:#000000;stroke-width:3;stroke-miterlimit:10;} .st78{fill:none;stroke:#FFFFFF;stroke-miterlimit:10;} .st79{fill:#4BC9FF;} .st80{fill:#5500DD;} .st81{fill:#FF3A00;} .st82{fill:#E6162D;} .st83{fill:#F1F1F1;} .st84{fill:#FF9933;} .st85{fill:#B92B27;} .st86{fill:#00ACED;} .st87{fill:#BD2125;} .st88{fill:#1877F2;} .st89{fill:#6665D2;} .st90{fill:#CE3056;} .st91{fill:#5BB381;} .st92{fill:#61C3EC;} .st93{fill:#E4B34B;} .st94{fill:#181EF2;} .st95{fill:#FF0000;} .st96{fill:#FE466C;} .st97{fill:#FA4778;} .st98{fill:#FF7700;} .st99{fill-rule:evenodd;clip-rule:evenodd;fill:#1F6BF6;} .st100{fill:#520094;} .st101{fill:#4477E8;} .st102{fill:#3D1D1C;} .st103{fill:#FFE812;} .st104{fill:#344356;} .st105{fill:#00CC76;} .st106{fill-rule:evenodd;clip-rule:evenodd;fill:#345E90;} .st107{fill:#1F65D8;} .st108{fill:#EB3587;} .st109{fill-rule:evenodd;clip-rule:evenodd;fill:#603A88;} .st110{fill:#E3CE99;} .st111{fill:#783AF9;} .st112{fill:#FF515E;} .st113{fill:#FF4906;} .st114{fill:#503227;} .st115{fill:#4C7BD9;} .st116{fill:#69C9D0;} .st117{fill:#1B92D1;} .st118{fill:#EB4F4A;} .st119{fill:#513728;} .st120{fill:#FF6600;} .st121{fill-rule:evenodd;clip-rule:evenodd;fill:#B61438;} .st122{fill:#FFFC00;} .st123{fill:#141414;} .st124{fill:#94D137;} .st125{fill-rule:evenodd;clip-rule:evenodd;fill:#F1F1F1;} .st126{fill-rule:evenodd;clip-rule:evenodd;fill:#66E066;} .st127{fill:#2D8CFF;} .st128{fill:#F1A300;} .st129{fill:#4BA2F2;} .st130{fill:#1A5099;} .st131{fill:#EE6060;} .st132{fill-rule:evenodd;clip-rule:evenodd;fill:#F48120;} .st133{fill:#222222;} .st134{fill:url(#SVGID_63_);} .st135{fill:#0077B5;} .st136{fill:#FFCC00;} .st137{fill:#EB3352;} .st138{fill:#F9D265;} .st139{fill:#F5B955;} .st140{fill:#DD2A7B;} .st141{fill:#66E066;} .st142{fill:#EB4E00;} .st143{fill:#FFC794;} .st144{fill:#B5332A;} .st145{fill:#4E85EB;} .st146{fill:#58A45C;} .st147{fill:#F2BC42;} .st148{fill:#D85040;} .st149{fill:#464EB8;} .st150{fill:#7B83EB;} </style> <g id="Layer_1"></g> <g id="Layer_2"> <g> <path class="st88" d="M50,2.5c-58.892,1.725-64.898,84.363-7.46,95l0,0h0H50h7.46l0,0C114.911,86.853,108.879,4.219,50,2.5z"></path> <path class="st83" d="M57.46,64.104h11.125l2.117-13.814H57.46v-8.965c0-3.779,1.85-7.463,7.781-7.463h6.021 c0,0,0-11.761,0-11.761c-12.894-2.323-28.385-1.616-28.722,17.66V50.29H30.417v13.814H42.54c0,0,0,33.395,0,33.396H50h7.46l0,0h0 V64.104z"></path> </g> </g> </g></svg>
+                </span>
+              </a>
+            {% endif %}
+            {% if section.settings.instagram_link != blank %}
+              <a href="{{ section.settings.instagram_link }}" target="_blank" rel="noopener" aria-label="Instagram">
+                <span class="cars-part-footer__social-icon">
+                    <svg width="64px" height="64px" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint0_radial_87_7153)"></rect> <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint1_radial_87_7153)"></rect> <rect x="2" y="2" width="28" height="28" rx="6" fill="url(#paint2_radial_87_7153)"></rect> <path d="M23 10.5C23 11.3284 22.3284 12 21.5 12C20.6716 12 20 11.3284 20 10.5C20 9.67157 20.6716 9 21.5 9C22.3284 9 23 9.67157 23 10.5Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M16 21C18.7614 21 21 18.7614 21 16C21 13.2386 18.7614 11 16 11C13.2386 11 11 13.2386 11 16C11 18.7614 13.2386 21 16 21ZM16 19C17.6569 19 19 17.6569 19 16C19 14.3431 17.6569 13 16 13C14.3431 13 13 14.3431 13 16C13 17.6569 14.3431 19 16 19Z" fill="white"></path> <path fill-rule="evenodd" clip-rule="evenodd" d="M6 15.6C6 12.2397 6 10.5595 6.65396 9.27606C7.2292 8.14708 8.14708 7.2292 9.27606 6.65396C10.5595 6 12.2397 6 15.6 6H16.4C19.7603 6 21.4405 6 22.7239 6.65396C23.8529 7.2292 24.7708 8.14708 25.346 9.27606C26 10.5595 26 12.2397 26 15.6V16.4C26 19.7603 26 21.4405 25.346 22.7239C24.7708 23.8529 23.8529 24.7708 22.7239 25.346C21.4405 26 19.7603 26 16.4 26H15.6C12.2397 26 10.5595 26 9.27606 25.346C8.14708 24.7708 7.2292 23.8529 6.65396 22.7239C6 21.4405 6 19.7603 6 16.4V15.6ZM15.6 8H16.4C18.1132 8 19.2777 8.00156 20.1779 8.0751C21.0548 8.14674 21.5032 8.27659 21.816 8.43597C22.5686 8.81947 23.1805 9.43139 23.564 10.184C23.7234 10.4968 23.8533 10.9452 23.9249 11.8221C23.9984 12.7223 24 13.8868 24 15.6V16.4C24 18.1132 23.9984 19.2777 23.9249 20.1779C23.8533 21.0548 23.7234 21.5032 23.564 21.816C23.1805 22.5686 22.5686 23.1805 21.816 23.564C21.5032 23.7234 21.0548 23.8533 20.1779 23.9249C19.2777 23.9984 18.1132 24 16.4 24H15.6C13.8868 24 12.7223 23.9984 11.8221 23.9249C10.9452 23.8533 10.4968 23.7234 10.184 23.564C9.43139 23.1805 8.81947 22.5686 8.43597 21.816C8.27659 21.5032 8.14674 21.0548 8.0751 20.1779C8.00156 19.2777 8 18.1132 8 16.4V15.6C8 13.8868 8.00156 12.7223 8.0751 11.8221C8.14674 10.9452 8.27659 10.4968 8.43597 10.184C8.81947 9.43139 9.43139 8.81947 10.184 8.43597C10.4968 8.27659 10.9452 8.14674 11.8221 8.0751C12.7223 8.00156 13.8868 8 15.6 8Z" fill="white"></path> <defs> <radialGradient id="paint0_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(12 23) rotate(-55.3758) scale(25.5196)"> <stop stop-color="#B13589"></stop> <stop offset="0.79309" stop-color="#C62F94"></stop> <stop offset="1" stop-color="#8A3AC8"></stop> </radialGradient> <radialGradient id="paint1_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(11 31) rotate(-65.1363) scale(22.5942)"> <stop stop-color="#E0E8B7"></stop> <stop offset="0.444662" stop-color="#FB8A2E"></stop> <stop offset="0.71474" stop-color="#E2425C"></stop> <stop offset="1" stop-color="#E2425C" stop-opacity="0"></stop> </radialGradient> <radialGradient id="paint2_radial_87_7153" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(0.500002 3) rotate(-8.1301) scale(38.8909 8.31836)"> <stop offset="0.156701" stop-color="#406ADC"></stop> <stop offset="0.467799" stop-color="#6A45BE"></stop> <stop offset="1" stop-color="#6A45BE" stop-opacity="0"></stop> </radialGradient> </defs> </g></svg>
+                </span>
+              </a>
+            {% endif %}
+            {% if section.settings.youtube_link != blank %}
+              <a href="{{ section.settings.youtube_link }}" target="_blank" rel="noopener" aria-label="YouTube">
+                <span class="cars-part-footer__social-icon">
+                    <svg width="64px" height="64px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="none"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="red" d="M14.712 4.633a1.754 1.754 0 00-1.234-1.234C12.382 3.11 8 3.11 8 3.11s-4.382 0-5.478.289c-.6.161-1.072.634-1.234 1.234C1 5.728 1 8 1 8s0 2.283.288 3.367c.162.6.635 1.073 1.234 1.234C3.618 12.89 8 12.89 8 12.89s4.382 0 5.478-.289a1.754 1.754 0 001.234-1.234C15 10.272 15 8 15 8s0-2.272-.288-3.367z"></path><path fill="#ffffff" d="M6.593 10.11l3.644-2.098-3.644-2.11v4.208z"></path></g></svg>
+                </span>
+              </a>
+            {% endif %}
+            {% if section.settings.twitter_link != blank %}
+              <a href="{{ section.settings.twitter_link }}" target="_blank" rel="noopener" aria-label="X / Twitter">
+                <span class="cars-part-footer__social-icon">
+                    <svg width="64px" height="64px" viewBox="0 -4 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <title>Twitter-color</title> <desc>Created with Sketch.</desc> <defs> </defs> <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"> <g id="Color-" transform="translate(-300.000000, -164.000000)" fill="#00AAEC"> <path d="M348,168.735283 C346.236309,169.538462 344.337383,170.081618 342.345483,170.324305 C344.379644,169.076201 345.940482,167.097147 346.675823,164.739617 C344.771263,165.895269 342.666667,166.736006 340.418384,167.18671 C338.626519,165.224991 336.065504,164 333.231203,164 C327.796443,164 323.387216,168.521488 323.387216,174.097508 C323.387216,174.88913 323.471738,175.657638 323.640782,176.397255 C315.456242,175.975442 308.201444,171.959552 303.341433,165.843265 C302.493397,167.339834 302.008804,169.076201 302.008804,170.925244 C302.008804,174.426869 303.747139,177.518238 306.389857,179.329722 C304.778306,179.280607 303.256911,178.821235 301.9271,178.070061 L301.9271,178.194294 C301.9271,183.08848 305.322064,187.17082 309.8299,188.095341 C309.004402,188.33225 308.133826,188.450704 307.235077,188.450704 C306.601162,188.450704 305.981335,188.390033 305.381229,188.271578 C306.634971,192.28169 310.269414,195.2026 314.580032,195.280607 C311.210424,197.99061 306.961789,199.605634 302.349709,199.605634 C301.555203,199.605634 300.769149,199.559408 300,199.466956 C304.358514,202.327194 309.53689,204 315.095615,204 C333.211481,204 343.114633,188.615385 343.114633,175.270495 C343.114633,174.831347 343.106181,174.392199 343.089276,173.961719 C345.013559,172.537378 346.684275,170.760563 348,168.735283" id="Twitter"> </path> </g> </g> </g></svg>
+                </span>
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- Contact Column -->
+      <div class="cars-part-footer__col cars-part-footer__contact">
+        <h3 class="cars-part-footer__heading">
+          {% comment %} {% if section.settings.contact_icon != blank %}
+            <span class="cars-part-footer__heading-icon">{{ section.settings.contact_icon }}</span>
+          {% else %}
+            <span class="cars-part-footer__heading-icon">
+                <svg height="24px" width="24px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512.001 512.001" xml:space="preserve" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path style="fill:#FAD52A;" d="M457.235,305.699l-72.52-164.225c-3.93-8.899-23.229-8.999-23.229-8.999H150.512 c0,0-19.3,0.097-23.229,8.999l-72.52,164.225c-10.623,24.053-16.008,49.583-16.008,75.881v27.754 c0,30.38,24.715,55.096,55.096,55.096h324.297c30.38,0,55.097-24.715,55.097-55.096V381.58 C473.244,355.284,467.858,329.753,457.235,305.699z"></path> <path style="fill:#FFEA5E;" d="M256.003,132.475H150.512c0,0-19.3,0.097-23.229,8.999l-72.52,164.225 c-10.623,24.053-16.008,49.583-16.008,75.881v27.754c0,30.38,24.715,55.096,55.096,55.096h162.153V132.475z"></path> <path style="fill:#FF9900;" d="M364.525,47.571h-217.05c-81.495,0-147.763,66.445-147.474,148.006 c0.086,24.195,19.99,43.656,44.185,43.656h75.493c22.731,0,41.158-18.427,41.158-41.158v-21.906 c0-16.225,13.153-29.379,29.379-29.379h131.569c16.225,0,29.379,13.153,29.379,29.379v21.906c0,22.731,18.427,41.158,41.158,41.158 h75.493c24.195,0,44.099-19.46,44.185-43.656C512.287,114.016,446.02,47.571,364.525,47.571z"></path> <path style="fill:#FAD52A;" d="M256,47.571H147.475c-81.495,0-147.763,66.445-147.474,148.006 c0.086,24.195,19.99,43.656,44.185,43.656h75.493c22.731,0,41.158-18.427,41.158-41.158v-21.906 c0-16.225,13.153-29.379,29.379-29.379h65.788L256,47.571z"></path> <path style="fill:#555559;" d="M351.387,202.374c2.15,20.71,19.655,36.859,40.934,36.859h75.493 c21.882,0,40.251-15.918,43.627-36.859H351.387z"></path> <g> <path style="fill:#AEADB3;" d="M0.559,202.374c3.377,20.941,21.746,36.859,43.627,36.859h75.493 c21.278,0,38.783-16.149,40.934-36.859H0.559z"></path> <circle style="fill:#AEADB3;" cx="197.645" cy="255.292" r="18.486"></circle> </g> <circle style="fill:#555559;" cx="256.008" cy="255.292" r="18.486"></circle> <path style="fill:#AEADB3;" d="M256.003,273.783c-10.209,0-18.486-8.276-18.486-18.486c0-10.209,8.276-18.486,18.486-18.486V273.783 z"></path> <circle style="fill:#555559;" cx="256.008" cy="311.482" r="18.486"></circle> <path style="fill:#AEADB3;" d="M256.003,329.973c-10.209,0-18.486-8.276-18.486-18.486c0-10.209,8.276-18.486,18.486-18.486V329.973 z"></path> <circle style="fill:#555559;" cx="256.008" cy="367.672" r="18.486"></circle> <path style="fill:#AEADB3;" d="M256.003,386.162c-10.209,0-18.486-8.276-18.486-18.486s8.276-18.486,18.486-18.486V386.162z"></path> <circle style="fill:#555559;" cx="314.359" cy="255.292" r="18.486"></circle> <circle style="fill:#AEADB3;" cx="197.645" cy="311.482" r="18.486"></circle> <circle style="fill:#555559;" cx="314.359" cy="311.482" r="18.486"></circle> <circle style="fill:#AEADB3;" cx="197.645" cy="367.672" r="18.486"></circle> <circle style="fill:#555559;" cx="314.359" cy="367.672" r="18.486"></circle> </g></svg>
+            </span>
+          {% endif %} {% endcomment %}
+          <span>Contact <em>Us</em></span>
+        </h3>
+
+        <div class="cars-part-footer__line"></div>
+
+        <ul class="cars-part-footer__contact-list">
+          {% if section.settings.phone != blank %}
+            <li>
+              <span class="cars-part-footer__mini-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbc059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a>
+            </li>
+          {% endif %}
+          {% if section.settings.email != blank %}
+            <li>
+              <span class="cars-part-footer__mini-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbc059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-mail"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+            </li>
+          {% endif %}
+          {% if section.settings.address != blank %}
+            <li>
+              <span class="cars-part-footer__mini-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#fbc059" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-map-pin"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <span>{{ section.settings.address }}</span>
+            </li>
+          {% endif %}
+        </ul>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="cars-part-footer__col cars-part-footer__links">
+        <h3 class="cars-part-footer__heading">
+          {% comment %} <span class="cars-part-footer__heading-icon">🔗</span> {% endcomment %}
+          <span>Quick <em>Links</em></span>
+        </h3>
+
+        <div class="cars-part-footer__line"></div>
+
+        {% if footer_menu_1 != blank %}
+          <ul class="cars-part-footer__link-list">
+            {% for link in linklists[footer_menu_1].links %}
+              <li>
+                <a href="{{ link.url }}">
+                  {% comment %} <span class="cars-part-footer__arrow">›</span> {% endcomment %}
+                  <span>{{ link.title }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+      <!-- Shopping Info -->
+      <div class="cars-part-footer__col cars-part-footer__links cars-part-footer__shopping">
+        <h3 class="cars-part-footer__heading">
+          {% comment %} <span class="cars-part-footer__heading-icon">
+            <svg width="24px" height="24px" viewBox="0 0 1024 1024" class="icon" version="1.1" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path d="M916.5 334.5v101.7c0 24.9-27.3 45.2-60.8 45.2h-2.4v-12.9h2.4c24 0 43.4-14.5 43.4-32.4V334.5c0-17.8-19.4-32.4-43.4-32.4H517.1c-0.4-3.1-0.7-5.7-1-7.8l2 0.2-0.1-2c7.7-0.9 15-2 22-3.3h315.8c33.4 0.1 60.7 20.4 60.7 45.3z" fill="#FF6EA9"></path><path d="M899.1 334.5v101.7c0 17.8-19.4 32.4-43.4 32.4H604v12.8h237v358.3c0 16.9-13.7 30.6-30.6 30.6h-604c-16.9 0-30.6-13.7-30.6-30.6V481.4h332.6v-12.8l29.3-6.4c11 33.7 25.2 63.6 42.8 79.6l-8.1 71.5 121.9 162 96.7-82.5-120.4-146-81-13.3c-45.2-39.5-67-185.8-72.6-231.4h338.6c24.1 0 43.5 14.6 43.5 32.4z" fill="#FFE843"></path><path d="M853.3 481.4v358.3c0 23.6-19.2 42.8-42.8 42.8h-604c-23.6 0-42.8-19.2-42.8-42.8V481.4h12.2v358.3c0 16.9 13.7 30.6 30.6 30.6h604c16.9 0 30.6-13.7 30.6-30.6V481.4h12.2z" fill="#FF6EA9"></path><path d="M841.1 469.6h12.2v11.9h-12.2z" fill="#FF6EA9"></path><path d="M853.3 468.6v1h-12.2v11.8H604v-12.8z" fill="#FF6EA9"></path><path d="M670.8 546.8l120.4 146-96.7 82.5-121.9-162 8.1-71.5c-17.6-16-31.8-45.8-42.8-79.6-19.7-59.8-29.7-131.7-33.2-160.1h12.5c5.6 45.6 27.4 191.9 72.6 231.4l81 13.3z m103.3 144.5L664.3 558.2l-71.9-11.9-7.1 63.6 111.1 147.7 77.7-66.3z" fill="#CE1B6D"></path><path d="M664.3 558.2l109.8 133.1-77.7 66.3-111.1-147.7 7.1-63.5z" fill="#D66474"></path><path d="M674.2 125c17.8 25.9 20.7 58.2 7.3 86.5-0.7 2.1-23.5 57-141.6 77.7h-22.1l-0.4-10.3c127.3-16.6 151.2-72.4 151.5-72.9 11.4-24.3 9.2-51.6-6-73.5-16-23.5-44.3-36.9-76.3-36.9-2.9 0-5.7 0.1-8.7 0.4-17.4 1.2-31.3 8.1-41.4 20.3-18.2 22-21.1 56.4-21.1 75.9 0-13-1.2-32-7-50.5 3.7-12.1 9.3-24.1 17.6-34.1 12.7-15.2 29.8-23.7 51-25.3 40.5-2.9 76.9 13.1 97.2 42.7z" fill="#CE1B6D"></path><path d="M662.9 132.7c15.2 21.9 17.4 49.1 6 73.5-0.2 0.5-24.2 56.2-151.5 72.9l-1.7-42.7 0.2-29.1c0-0.1-0.6-6-0.6-14.8v-0.1c0-19.6 2.9-53.9 21.1-75.9 10.1-12.2 24.1-19.1 41.4-20.3 2.9-0.2 5.7-0.4 8.7-0.4 32.2 0 60.4 13.4 76.4 36.9zM517.8 289.3H540c-7 1.3-14.3 2.4-22 3.3l-0.2-3.3z" fill="#FF6EA9"></path><path d="M537.9 462.3l-29.3 6.4H161.2c-24 0-43.4-14.5-43.4-32.4V334.5c0-17.8 19.4-32.4 43.4-32.4h343.4c3.6 28.5 13.6 100.4 33.3 160.2z" fill="#FFE843"></path><path d="M518 292.6l0.1 2-2-0.2c0-0.6-0.1-1.1-0.1-1.5 0.6-0.1 1.4-0.2 2-0.3zM517.8 289.3l0.1 3.3c-0.6 0.1-1.3 0.2-2 0.2-0.2-1.6-0.4-2.8-0.4-3.5h2.3z" fill="#FF6EA9"></path><path d="M517.5 279l0.4 10.3h-2.2c-0.1-0.4-0.1-0.6-0.1-0.7l-6.7 0.7h-7.2l0.1-10.3c0.6 0.1 1.3 0.1 2.1 0.2l-1.7-43 0.2-28.2c-0.1-0.6-0.7-6.5-0.7-15.4v-0.6c0-12.7 1.2-31.5 6.8-50.1 5.7 18.5 7 37.5 7 50.5v0.1c0 9.3-0.6 15.5-0.7 16.4l1.1 27.5-0.4 42.9c0.6-0.2 1.4-0.2 2-0.3z" fill="#CE1B6D"></path><path d="M515.8 236.4l1.7 42.7c-0.6 0.1-1.3 0.1-2.1 0.2l0.4-42.9z" fill="#FF6EA9"></path><path d="M517.1 302.1h-12.5c-0.4-3.2-0.6-5.9-0.9-7.8l5.5-0.6h1l5.9 0.6c0.3 2.1 0.6 4.8 1 7.8z" fill="#CE1B6D"></path><path d="M516 292.8c0 0.4 0.1 0.9 0.1 1.5l-5.9-0.6h-0.5c2.2-0.3 4.2-0.5 6.3-0.9z" fill="#CE1B6D"></path><path d="M516 207.3l-0.2 29.1-1.1-27.5c0.1-0.9 0.7-7.1 0.7-16.4 0 8.8 0.6 14.6 0.6 14.8z" fill="#FF6EA9"></path><path d="M516 292.8c-2.1 0.4-4.2 0.6-6.2 0.9-2.1-0.2-4.2-0.5-6.1-0.9-0.2-1.5-0.4-2.4-0.4-2.9l5.5-0.6h6.8c0 0.7 0.2 1.9 0.4 3.5zM515.6 289.3h-6.8l6.7-0.7c0 0.1 0 0.3 0.1 0.7z" fill="#CE1B6D"></path><path d="M503.7 292.8c2 0.4 4 0.6 6.1 0.9h-0.5l-5.5 0.6c-0.1-0.5-0.1-1-0.1-1.5z" fill="#CE1B6D"></path><path d="M508.8 289.3l-5.5 0.6c0 0.5 0.1 1.5 0.4 2.9-0.7 0-1.3-0.1-2.1-0.2v-3.3h7.2zM508.6 468.6v12.8H175.9v-12.8z" fill="#FF6EA9"></path><path d="M504.6 302.1H161.3c-24 0-43.4 14.5-43.4 32.4v101.7c0 17.8 19.4 32.4 43.4 32.4H176v1h-12.2v11.9h-2.4c-33.5 0-60.8-20.3-60.8-45.2V334.5c0-24.9 27.3-45.2 60.8-45.2h318.3c7 1.3 14.3 2.4 22 3.3v2l2.2-0.2c0.1 1.9 0.4 4.5 0.7 7.7zM502.1 236.2l1.7 43c-0.7-0.1-1.5-0.1-2.1-0.2l0.4-42.8z" fill="#FF6EA9"></path><path d="M503.8 294.3l-2.2 0.2v-2c0.7 0.1 1.3 0.2 2.1 0.2 0 0.6 0 1.1 0.1 1.6zM502.3 208l-0.2 28.2-1.1-27.9c0-0.5 0.6-6.6 0.6-15.8 0 9 0.6 14.9 0.7 15.5z" fill="#FF6EA9"></path><path d="M501 208.4l1.1 27.9-0.4 42.8c-127.3-16.7-153.5-72.5-153.8-73.3-11.2-23.8-8.9-51.1 6.1-73 16.1-23.5 44.3-36.9 76.4-36.9 2.8 0 5.7 0.1 8.7 0.4 17.2 1.2 31.2 8.1 41.3 20.3 18.1 21.6 21.1 55.6 21.1 75.5v0.6c0.1 9.1-0.5 15.2-0.5 15.7z" fill="#FF6EA9"></path><path d="M501.7 279l-0.1 10.3h-22c-118.3-20.8-143.1-75.5-144.1-78-13.2-28.1-10.5-60.4 7.3-86.3 20.3-29.6 56.7-45.5 97.3-42.5 21.1 1.6 38.3 10.1 50.9 25.3 8.3 10 13.8 21.9 17.5 34.1-5.6 18.6-6.8 37.4-6.8 50.1 0-19.9-3.1-53.9-21.1-75.5-10.1-12.2-24.1-19.1-41.3-20.3-2.9-0.2-5.9-0.4-8.7-0.4-32.1 0-60.3 13.4-76.4 36.9-15 21.9-17.4 49.1-6.1 73 0.1 0.8 26.4 56.6 153.6 73.3z" fill="#CE1B6D"></path><path d="M501.6 289.3v3.3c-7.7-0.9-15-2-22-3.3h22zM163.7 469.6h12.2v11.9h-12.2z" fill="#FF6EA9"></path></g></svg>
+          </span> {% endcomment %}
+          <span>Shopping <em>Info</em></span>
+        </h3>
+
+        <div class="cars-part-footer__line"></div>
+
+        {% if footer_menu_2 != blank %}
+          <ul class="cars-part-footer__link-list">
+            {% for link in linklists[footer_menu_2].links %}
+              <li>
+                <a href="{{ link.url }}">
+                  {% comment %} <span class="cars-part-footer__arrow">›</span> {% endcomment %}
+                  <span>{{ link.title }}</span>
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Benefits Row -->
+  {% if section.settings.show_benefits %}
+    <div class="cars-part-footer__benefits">
+      <div class="cars-part-footer__benefits-grid">
+        <div class="cars-part-footer__benefit">
+          <div class="cars-part-footer__benefit-icon">🚚</div>
+          <div>
+            <strong>{{ section.settings.benefit_1_title }}</strong>
+            <span>{{ section.settings.benefit_1_text }}</span>
+          </div>
+        </div>
+
+        <div class="cars-part-footer__benefit">
+          <div class="cars-part-footer__benefit-icon">🛡️</div>
+          <div>
+            <strong>{{ section.settings.benefit_2_title }}</strong>
+            <span>{{ section.settings.benefit_2_text }}</span>
+          </div>
+        </div>
+
+        <div class="cars-part-footer__benefit">
+          <div class="cars-part-footer__benefit-icon">↻</div>
+          <div>
+            <strong>{{ section.settings.benefit_3_title }}</strong>
+            <span>{{ section.settings.benefit_3_text }}</span>
+          </div>
+        </div>
+
+        <div class="cars-part-footer__benefit">
+          <div class="cars-part-footer__benefit-icon">🎧</div>
+          <div>
+            <strong>{{ section.settings.benefit_4_title }}</strong>
+            <span>{{ section.settings.benefit_4_text }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+
+  <!-- Bottom Row -->
+  <div class="cars-part-footer__bottom page-width">
+    <div class="cars-part-footer__bottom-inner">
+      <div class="cars-part-footer__copyright">
+        {% if section.settings.copyright_text != blank %}
+          {{ section.settings.copyright_text }}
+        {% else %}
+          © {{ 'now' | date: '%Y' }}, {{ shop.name }} Powered by Shopify
+        {% endif %}
+      </div>
+
+      {% if section.settings.bottom_links_menu != blank %}
+        <div class="cars-part-footer__bottom-links">
+          {% for link in linklists[section.settings.bottom_links_menu].links %}
+            <a href="{{ link.url }}">{{ link.title }}</a>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% if section.settings.show_payment_icons %}
+        <div class="cars-part-footer__payments">
+          {% for type in shop.enabled_payment_types %}
+            {{ type | payment_type_svg_tag: class: 'cars-part-footer__payment-icon' }}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</footer>
+
+<style>
+.cars-part-footer {
+  background: #f3f3f300;
+  color: #d7d7d7;
+  position: relative;
+  overflow: hidden;
+  border-top: 1px solid #b8873c;
+}
+
+.cars-part-footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(255, 205, 110, 0.08), transparent 20%),
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-size: auto, 80px 80px;
+  pointer-events: none;
+}
+
+.cars-part-footer__top {
+  padding: 55px 40px 25px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 1px solid #b8873c;
+}
+
+.cars-part-footer__grid {
+  /*max-width: 1500px;*/
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.cars-part-footer__col {
+  position: relative;
+  /*min-height: 280px;*/
+  min-height: 322px;
+  padding-right: 25px;
+}
+
+.cars-part-footer__col:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 18px;
+  right: 0;
+  width: 1px;
+  height: calc(100% - 36px);
+  background: rgba(255,255,255,0.12);
+}
+
+.cars-part-footer__brand {
+  /*text-align: center;*/
+  padding-right: 30px;
+}
+
+/*.cars-part-footer__logo {
+  margin-bottom: 22px;
+}*/
+
+.cars-part-footer__logo img {
+  max-width: 170px;
+  height: auto;
+  display: inline-block;
+}
+
+.cars-part-footer__text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #bfbfbf;
+  max-width: 300px;
+  margin: 0 auto 24px;
+  margin-left: 0;
+}
+
+.cars-part-footer__social {
+  display: flex;
+  /*justify-content: center;*/
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cars-part-footer__social a {
+  width: 42px;
+  height: 42px;
+  border: 1px solid #b8873c;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  text-decoration: none;
+  background: rgba(255,255,255,0.02);
+  transition: 0.3s ease;
+}
+
+.cars-part-footer__social a:hover {
+  background: #b8873c;
+  color: #000;
+  transform: translateY(-2px);
+}
+
+span.cars-part-footer__social-icon svg{
+    width: 24px;
+    height: 24px;
+}
+
+span.cars-part-footer__social-icon {
+    display: flex;
+}
+
+.cars-part-footer__heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.cars-part-footer__heading em {
+  font-style: normal;
+  color: #000;
+}
+
+.cars-part-footer__heading-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #b8873c;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #d7a34b;
+  background: rgba(183, 135, 60, 0.12);
+  flex: 0 0 auto;
+  font-size: 18px;
+}
+
+.cars-part-footer__line {
+  width: 46px;
+  height: 2px;
+  background: #b8873c;
+  margin: 8px 0 24px 54px;
+  opacity: 0.9;
+}
+
+.cars-part-footer__contact-list,
+.cars-part-footer__link-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cars-part-footer__contact-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.cars-part-footer__contact-list a,
+.cars-part-footer__contact-list span,
+.cars-part-footer__link-list a {
+  color: #cfcfcf;
+  text-decoration: none;
+  transition: 0.25s ease;
+}
+
+.cars-part-footer__contact-list a:hover,
+.cars-part-footer__link-list a:hover {
+  color: #d7a34b;
+}
+
+.cars-part-footer__mini-icon {
+  width: 34px;
+  height: 34px;
+  border: 1px solid #b8873c;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #d7a34b;
+  flex: 0 0 auto;
+  margin-top: 2px;
+}
+
+.cars-part-footer__link-list li {
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.cars-part-footer__link-list li a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 0;
+  font-size: 16px;
+}
+
+.cars-part-footer__arrow {
+  color: #d7a34b;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.cars-part-footer__benefits {
+  border-top: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  padding: 22px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.cars-part-footer__benefits-grid {
+  /*max-width: 1500px;*/
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.cars-part-footer__benefit {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 14px;
+  border-right: 1px solid rgba(255,255,255,0.08);
+}
+
+.cars-part-footer__benefit:last-child {
+  border-right: none;
+}
+
+.cars-part-footer__benefit-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(183, 135, 60, 0.12);
+  border: 1px solid rgba(183, 135, 60, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  color: #d7a34b;
+  flex: 0 0 auto;
+}
+
+.cars-part-footer__benefit strong {
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+
+.cars-part-footer__benefit span {
+  display: block;
+  color: #b5b5b5;
+  font-size: 14px;
+}
+
+.cars-part-footer__bottom {
+  /*border-top: 1px solid #b8873c;*/
+  padding: 18px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.cars-part-footer__bottom-inner {
+  /*max-width: 1500px;*/
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.cars-part-footer__copyright {
+  font-size: 14px;
+  color: #bfbfbf;
+}
+
+.cars-part-footer__bottom-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.cars-part-footer__bottom-links a {
+  color: #bfbfbf;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.cars-part-footer__bottom-links a:hover {
+  color: #d7a34b;
+}
+
+.cars-part-footer__payments {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.cars-part-footer__payment-icon {
+  height: 30px;
+  width: auto;
+}
+
+@media (max-width: 1200px) {
+  .cars-part-footer__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cars-part-footer__col {
+    min-height: auto;
+  }
+
+  .cars-part-footer__col:not(:last-child)::after {
+    display: none;
+  }
+
+  .cars-part-footer__brand {
+    grid-column: 1 / -1;
+    text-align: left;
+    padding-right: 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 25px;
+  }
+
+  .cars-part-footer__text,
+  .cars-part-footer__social {
+    justify-content: flex-start;
+    margin-left: 0;
+  }
+
+  .cars-part-footer__text {
+    max-width: 100%;
+  }
+
+  .cars-part-footer__line {
+    margin-left: 54px;
+  }
+
+  .cars-part-footer__benefits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cars-part-footer__benefit:nth-child(2n) {
+    border-right: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .cars-part-footer__top,
+  .cars-part-footer__benefits,
+  .cars-part-footer__bottom {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  .cars-part-footer__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cars-part-footer__brand {
+    padding-bottom: 22px;
+  }
+
+  .cars-part-footer__heading {
+    font-size: 20px;
+  }
+
+  .cars-part-footer__benefits-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cars-part-footer__benefit {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding: 12px 0;
+  }
+
+  .cars-part-footer__benefit:last-child {
+    border-bottom: none;
+  }
+
+  .cars-part-footer__bottom-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cars-part-footer__payments {
+    justify-content: flex-start;
+  }
+}
+</style>
+
+{% schema %}
+{
+  "name": "Cust Footer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo"
+    },
+    {
+      "type": "text",
+      "id": "logo_alt",
+      "label": "Logo alt text",
+      "default": "Store logo"
+    },
+    {
+      "type": "richtext",
+      "id": "brand_text",
+      "label": "Brand text",
+      "default": "<p>Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since.</p>"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_social_icons",
+      "label": "Show social icons",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "facebook_link",
+      "label": "Facebook link"
+    },
+    {
+      "type": "url",
+      "id": "instagram_link",
+      "label": "Instagram link"
+    },
+    {
+      "type": "url",
+      "id": "youtube_link",
+      "label": "YouTube link"
+    },
+    {
+      "type": "url",
+      "id": "twitter_link",
+      "label": "X / Twitter link"
+    },
+    {
+      "type": "text",
+      "id": "contact_icon",
+      "label": "Contact heading icon",
+      "default": "☎"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "default": "+1800-140-1000"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "support@carspart.com"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "Address",
+      "default": "PO Box 1622, Vissasang St West"
+    },
+    {
+      "type": "link_list",
+      "id": "quick_links_menu",
+      "label": "Quick links menu"
+    },
+    {
+      "type": "link_list",
+      "id": "shopping_info_menu",
+      "label": "Shopping info menu"
+    },
+    {
+      "type": "link_list",
+      "id": "bottom_links_menu",
+      "label": "Bottom links menu"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_benefits",
+      "label": "Show benefits row",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_title",
+      "label": "Benefit 1 title",
+      "default": "FREE SHIPPING"
+    },
+    {
+      "type": "text",
+      "id": "benefit_1_text",
+      "label": "Benefit 1 text",
+      "default": "On orders over $150"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_title",
+      "label": "Benefit 2 title",
+      "default": "SECURE PAYMENT"
+    },
+    {
+      "type": "text",
+      "id": "benefit_2_text",
+      "label": "Benefit 2 text",
+      "default": "100% protected payments"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_title",
+      "label": "Benefit 3 title",
+      "default": "30 DAYS RETURN"
+    },
+    {
+      "type": "text",
+      "id": "benefit_3_text",
+      "label": "Benefit 3 text",
+      "default": "Hassle free return"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4_title",
+      "label": "Benefit 4 title",
+      "default": "CUSTOMER SUPPORT"
+    },
+    {
+      "type": "text",
+      "id": "benefit_4_text",
+      "label": "Benefit 4 text",
+      "default": "Dedicated support"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Copyright text",
+      "default": "© 2026, shubhlemosys Powered by Shopify"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Show payment icons",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cust Footer"
+    }
+  ]
+}
+{% endschema %}

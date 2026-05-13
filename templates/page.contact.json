@@ -9,6 +9,16 @@
  */
 {
   "sections": {
+    "custom_liquid_9PgmL7": {
+      "type": "custom-liquid",
+      "name": "t:sections.custom-liquid.presets.name",
+      "settings": {
+        "custom_liquid": "",
+        "color_scheme": "scheme-3",
+        "padding_top": 40,
+        "padding_bottom": 76
+      }
+    },
     "main": {
       "type": "main-page",
       "settings": {
@@ -28,6 +38,7 @@
     }
   },
   "order": [
+    "custom_liquid_9PgmL7",
     "main",
     "form"
   ]
